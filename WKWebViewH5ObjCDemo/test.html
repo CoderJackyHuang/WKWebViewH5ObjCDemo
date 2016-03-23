@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>iOS and Js</title>
+    <style type="text/css">
+      * {
+        font-size: 40px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    
+    <div style="margin-top: 100px">
+      <h1>Test how to use objective-c call js</h1><br/>
+      <div><input type="button" value="call js alert" onclick="callJsAlert()"></div>
+      <br/>
+      <div><input type="button" value="Call js confirm" onclick="callJsConfirm()"></div><br/>
+    </div>
+    <br/>
+    <div>
+      <div><input type="button" value="Call Js prompt " onclick="callJsInput()"></div><br/>
+      <div>Click me here: <a href="http://www.baidu.com">Jump to Baidu</a></div>
+    </div>
+    
+    <br/>
+    <div id="SwiftDiv">
+      <span id="jsParamFuncSpan" style="color: red; font-size: 50px;"></span>
+    </div>
+    
+    <script type="text/javascript">
+      function callJsAlert() {
+        alert('Objective-C call js to show alert');
+        
+        window.webkit.messageHandlers.AppModel.postMessage({body: 'call js alert in js'});
+      }
+    
+    function callJsConfirm() {
+      if (confirm('confirm', 'Objective-C call js to show confirm')) {
+        document.getElementById('jsParamFuncSpan').innerHTML
+        = 'true';
+      } else {
+        document.getElementById('jsParamFuncSpan').innerHTML
+        = 'false';
+      }
+      
+      // AppModel是我们所注入的对象
+      window.webkit.messageHandlers.AppModel.postMessage({body: 'call js confirm in js'});
+    }
+    
+    function callJsInput() {
+      var response = prompt('Hello', 'Please input your name:');
+      document.getElementById('jsParamFuncSpan').innerHTML = response;
+      
+       // AppModel是我们所注入的对象
+      window.webkit.messageHandlers.AppModel.postMessage({body: response});
+    }
+      </script>
+  </body>
+</html>
