@@ -5,4 +5,4 @@
 
 #文章讲解
 
-[WKWebView与JS交互](http://www.henishuo.com/wkwebview-js-h5-oc/)
+[WKWebView与JS交互](http://www.huangyibiao.com/wkwebview-js-h5-oc/)
